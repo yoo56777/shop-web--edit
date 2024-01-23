@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0.0</title>
+     
+    <!-- slide link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- font icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css">;
+
+</head>
+
+<body>
+
+<!-- header section starts -->
+
+<header class="header">
+
+    <a href="#" class="logo"><i class="fas fa-shopping-basket"></i> OOO購物 </a>
+    
+    <nav class="navbar">
+        <a href="index.html#home">News</a>
+        <a href="index.html#products">優惠商品</a>
+        <a href="index.html#categories">商品分類</a>
+        <a href="index.html#features">產品特色</a>
+        <a href="order-page.html">訂單查詢</a>
+        <a href="shopping-cart-page.html">購物車</a>
+    </nav>
+
+    <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+    </div>
+
+    <form action="" class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+    <div class="shopping-cart">
+        <div class="box">
+            <i class="fas fa-trash"></i>
+            <img src="image/product1.jpg" alt="">
+            <div class="content">
+                <h3>watermalon</h3>
+                <span class="price">$4.99/-</span>
+                <span class="quantity">qty : 1</span>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fas fa-trash"></i>
+            <img src="image/product2.jpg" alt="">
+            <div class="content">
+                <h3>onion</h3>
+                <span class="price">$4.99/-</span>
+                <span class="quantity">qty : 1</span>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fas fa-trash"></i>
+            <img src="image/product3.jpg" alt="">
+            <div class="content">
+                <h3>chicken</h3>
+                <span class="price">$4.99/-</span>
+                <span class="quantity">qty : 1</span>
+            </div>
+        </div>
+        <div class="total"> total : $19.69/- </div>
+        <a href="#" class="btn">checkout</a>
+    </div>
+
+    <form action="" class="login-form">
+        <h3>login now</h3>
+        <input type="email" placeholder="your email" class="box">
+        <input type="password" placeholder="your password" class="box">
+        <p>forget your passward <a href="#">click here</a></p>
+        <p>don't have an account <a href="#">create now</a></p>
+        <input type="submit" placeholder="login now" class="btn">
+    </form>
+
+
+</header>
+
+<!-- header section ends -->
+
+<!-- slider section starts -->
+
+<div class="slider">
+    <div class="carousel">
+        <div class="container">
+            <a target="_blank">
+                <img src="image/博美1.jpg"/>
+            </a>
+            <a target="_blank">
+                <img src="image/博美2.jpg"/>
+            </a>
+            <a target="_blank">
+                <img src="image/博美3.jpg"/>
+            </a>
+        </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+
+<!-- slider section ends -->
+
+<!-- home section starts -->
+
+ <section class="home" id="home">
+
+    <div class="content">
+        <h3>fresh and <span>organic</span> products for your</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam Libero nostrum
+        veniam facere tempore nisi.</p>
+        <a href="#products" class="btn">查看優惠商品</a>
+    </div>
+ </section>
+
+<!-- home section ends -->
+
+<!-- products section starts -->
+
+<section class="products" id="products">
+    <h1 class="heading"> <span>優惠商品</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="image/product1.jpg" alt="">
+                <h3>watermalon</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/product2.jpg" alt="">
+                <h3>onion</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/product3.jpg" alt="">
+                <h3>chicken</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/product4.jpg" alt="">
+                <h3>cabbage</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+        
+        </div>
+    
+    </div>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="image/product5.jpg" alt="">
+                <h3>potato</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/product6.jpg" alt="">
+                <h3>avocado</h3>
+                <div class="price"> $ 100</div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/product7.jpg" alt="">
+                <h3>carrot</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="image/product8.jpg" alt="">
+                <h3>green lemon</h3>
+                <div class="price"> $ 100 </div>
+                <a href="#" class="btn">add to cart</a>
+            </div>
+        
+        </div>
+    
+    </div>
+
+</section>
+
+<!-- products section ends -->
+
+<!-- categories section starts -->
+
+<section class="categories" id="categories">
+
+    <h1 class="heading"> <span>商品分類</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="image/categories1.jpg" alt="">
+            <h3>vegetables</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="image/categories2.jpg" alt="">
+            <h3>fresh fruits</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="image/categories3.jpg" alt="">
+            <h3>dairy products</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="image/categories4.jpg" alt="">
+            <h3>fresh meat</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- categories section ends -->
+
+<!-- features section starts -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> <span>產品特色</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="image/feature1.jpg" alt="">
+            <h3>fresh and organic</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/feature2.jpg" alt="">
+            <h3>free delivery</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/feature3.jpg" alt="">
+            <h3>easy payments</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- features section ends -->
+
+<!-- footer section starts -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3> groco <i class="fas fa-shopping-basket"></i> </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod officia voluptas, sed, sunt ut cum quisquam commodi repudiandae iure id odit illum exercitationem in facere quia.</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> qwerwasd@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> taipei, taiwan </a>  
+        </div>
+        
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="index.html#home" class="links"> <i class="fas fa-arrow-right"></i> News</a>
+            <a href="index.html#products" class="links"> <i class="fas fa-arrow-right"></i> 優惠商品 </a>
+            <a href="index.html#categories" class="links"> <i class="fas fa-arrow-right"></i> 商品分類 </a>
+            <a href="index.html#features" class="links"> <i class="fas fa-arrow-right"></i> 產品特色 </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <input type="email" placeholder="your email" class="email">
+            <input type="submit" value="subscribe" class="btn">
+            <img src="image/payment.jpg" class="payment-img" alt="">
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> syscom </span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- js link -->
+<script src="script.js"></script>
+
+</body>
+</html>
+
+<script>
+    let index = 0
+
+    // 圖片數量
+    let imageCount = document.querySelectorAll(
+        ".carousel .container img"
+    ).length
+
+    const bottom = document.querySelector(".carousel .bottom")
+    for (let i = 0; i < imageCount; i++) {
+        const indicator = document.createElement("div")
+        indicator.classList.add("indicator")
+        indicator.onclick = () => setIndex(i)
+    
+        bottom.append(indicator)
+    }
+
+    function createAuto() {
+        return setInterval(() => {
+            index++
+            refresh()
+        }, 3000)
+    }   
+    // 自動滾動
+    let autoTimer = createAuto()
+
+    function refresh() {
+        if (index < 0) {
+            // 下標小於 0 時，設置最右的圖片
+            index = imageCount - 1
+        } else if (index >= imageCount) {
+            // 下標超過上限時，設置最左的圖片
+            index = 0
+        }
+    
+        // 輪播框
+        let carousel = document.querySelector(".carousel")
+        let width = getComputedStyle(carousel).width
+        width = Number(width.slice(0, -2))
+    
+        carousel.querySelector(".container").style.left =
+            index * width * -1 + "px"
+    }
+
+    let refreshWrapper = (func) => {
+        // refresh 裝飾器
+        return function (...args) {
+            let result = func(...args)
+            refresh()
+        
+            // 重製自動滾動
+            clearInterval(autoTimer)
+            autoTimer = createAuto()
+            return result
+        }
+    }
+
+    refresh()
+</script>
