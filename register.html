@@ -33,15 +33,95 @@
 
 <section class="register" id="register">
     <h1 class="heading"> <span>註冊</span> </h1>
-    <div id="input-area">
-        <form id="area1">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              </div>            
-        </form>
-    </div>
+    <form id="input-area" target="iframe">
+        <div class="mb-3">
+            <label for="accountInput" class="form-label">帳號</label>
+            <input type="text" class="form-control" id="accountInput" required>
+        </div>      
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">密碼</label>
+            <input type="password" class="form-control" id="passwordInput" required>
+        </div>          
+        <div class="mb-3">
+            <label for="nameInput" class="form-label">姓名</label>
+            <input type="text" class="form-control" id="nameInput" required>
+        </div>
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="example@example.com"  required>
+        </div>                
+        <div class="mb-3">
+            <label for="phoneInput" class="form-label">電話</label>
+            <input type="text" class="form-control" id="phoneInput" required>
+        </div>
+        <div class="mb-3">
+            <label for="addrInput" class="form-label">地址</label>
+            <input type="text" class="form-control" id="addrInput">
+        </div>
+        <div class="mb-4">
+            <button class="btn" type="button" id="regbtn">註冊</button>
+        </div>
+    </form>
 </section>
+<script>
+    $('#regbtn').on('click', function() {
+        if ($('#accountInput').val().length === 0){
+            window.alert('請輸入帳號!')
+            $('#accountInput').focus()
+            return
+        }else if ($('#passwordInput').val().length === 0){
+            window.alert('請輸入密碼!')
+            $('#passwordInput').focus()
+            return
+        }else if ($('#nameInput').val().length === 0){
+            window.alert('請輸入姓名!')
+            $('#nameInput').focus()
+            return
+        }else if ($('#emailInput').val().length === 0){
+            window.alert('請輸入信箱!')
+            $('#emailInput').focus()
+            return
+        }else if ($('#phoneInput').val().length === 0){
+            window.alert('請輸入電話!')
+            $('#phoneInput').focus()
+            return
+        }else if ($('#addrInput').val().length === 0){
+            window.alert('請輸入地址!')
+            $('#addrInput').focus()
+            return
+        }
 
+
+        let dataUrl = "http://172.16.82.2:9090/user/createUser"
+        let jsonData = {
+            userAccount: $('#accountInput').val(),
+            userPassword: $('#passwordInput').val(),
+            userName: $('#nameInput').val(),
+            userEmail: $('#emailInput').val(),
+            userPhone: $('#phoneInput').val(),
+            userAddress: $('#addrInput').val(),
+        }
+        console.log(jsonData)
+
+        $.ajax({
+            url: dataUrl,
+            method: 'POST',
+            dataType: 'text',
+            data: JSON.stringify(jsonData),
+            async: true,
+            contentType: 'application/json;charset=utf-8',
+            cache: false,
+
+            success: res => {
+                window.alert(res)
+            },
+
+            error: err => {
+                console.log(err)
+                window.alert("新增失敗!")
+            },
+        });
+    })
+</script>
 </body>
 </html>
