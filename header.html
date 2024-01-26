@@ -63,13 +63,13 @@
     <input id="login" type="button" placeholder="login now" class="btn" value="登入">
 </form>    
 
-<form action="" class="register-form">
+<form action="" class="register-form" onsubmit="return false;">
     <h3>Register</h3>
-    <input id="regAccount" type="text" placeholder="your account" class="box">
-    <input id="regPassword" type="password" placeholder="your password" class="box">
-    <input id="regName" type="text" placeholder="your name" class="box">
-    <input id="regEmail" type="email" placeholder="your email" class="box">
-    <input id="regPhone" type="tel" placeholder="your phone" class="box">
-    <input id="regAddress" type="text" placeholder="your Address" class="box">
-    <input id="register-btn" type="button" placeholder="Register" class="btn" value="註冊">
-</form>    
+    <input id="regAccount" type="text" placeholder="your account" class="box regForm" required>
+    <input id="regPassword" type="password" placeholder="your password" class="box regForm" required>
+    <input id="regName" type="text" placeholder="your name" class="box regForm" required>
+    <input id="regEmail" type="email" placeholder="your email" class="box regForm" required>
+    <input id="regPhone" type="tel" placeholder="your phone" class="box regForm" required>
+    <input id="regAddress" type="text" placeholder="your Address" class="box regForm" required>
+    <button id="register-btn" type="submit" placeholder="Register" class="btn">註冊</button>
+</form>

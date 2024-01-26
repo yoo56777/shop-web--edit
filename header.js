@@ -57,34 +57,7 @@ $('.header').load('header.html', function(){
         registerForm.classList.remove('active');
     }
 
-    $('#register-btn').on('click', function() {
-        if ($('#regAccount').val().length === 0){
-            window.alert('請輸入帳號!')
-            $('#regAccount').focus()
-            return
-        }else if ($('#regPassword').val().length === 0){
-            window.alert('請輸入密碼!')
-            $('#regPassword').focus()
-            return
-        }else if ($('#regName').val().length === 0){
-            window.alert('請輸入姓名!')
-            $('#regName').focus()
-            return
-        }else if ($('#regEmail').val().length === 0){
-            window.alert('請輸入信箱!')
-            $('#regEmail').focus()
-            return
-        }else if ($('#regPhone').val().length === 0){
-            window.alert('請輸入電話!')
-            $('#phoneIregPhonenput').focus()
-            return
-        }else if ($('#regAddress').val().length === 0){
-            window.alert('請輸入地址!')
-            $('#regAddress').focus()
-            return
-        }
-
-
+    $('.register-form').on('submit', function() {
         let dataUrl = "http://172.16.82.2:9090/user/createUser"
         let jsonData = {
             userAccount: $('#regAccount').val(),
@@ -94,7 +67,6 @@ $('.header').load('header.html', function(){
             userPhone: $('#regPhone').val(),
             userAddress: $('#regAddress').val(),
         }
-        console.log(jsonData)
 
         $.ajax({
             url: dataUrl,
