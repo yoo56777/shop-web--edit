@@ -728,3 +728,57 @@ table tr td p{
     color: white;
     border-radius: 8px;
 }
+
+.list-item{
+    background-color: white;
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+}
+
+/* 頁面按鈕 */
+
+.simple-pagination ul{
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    /* 頁碼固定在下方 */
+    /* position: fixed; */
+    /* bottom: 0px;
+    left: 50%;
+    transform: translate(-50%); */
+
+}
+
+.simple-pagination li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.simple-pagination li a{
+    font-size: 30px;
+    color: var(--black);
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: 1px solid var(--orange);
+    background-color: white;
+    box-shadow: 5px 5px 3px var(--black);
+}
+
+.simple-pagination .current{
+    font-size: 30px;
+    color: var(--black);
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    background-color: var(--orange);
+    border: 1px solid var(--black);
+    box-shadow: 5px 5px 3px var(--black);
+}
