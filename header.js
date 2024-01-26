@@ -6,6 +6,7 @@ $('.header').load('header.html', function(){
         shoppingCart.classList.remove('active');
         loginForm.classList.remove('active');
         navbar.classList.remove('active');
+        registerForm.classList.remove('active');
     }
     
     let shoppingCart = document.querySelector('.shopping-cart');
@@ -15,6 +16,7 @@ $('.header').load('header.html', function(){
         searchForm.classList.remove('active');
         loginForm.classList.remove('active');
         navbar.classList.remove('active');
+        registerForm.classList.remove('active');
     }
     
     let loginForm = document.querySelector('.login-form');
@@ -24,6 +26,7 @@ $('.header').load('header.html', function(){
         searchForm.classList.remove('active');
         shoppingCart.classList.remove('active');
         navbar.classList.remove('active');
+        registerForm.classList.remove('active');
     }
     
     let navbar = document.querySelector('.navbar');
@@ -33,6 +36,17 @@ $('.header').load('header.html', function(){
         searchForm.classList.remove('active');
         shoppingCart.classList.remove('active');
         loginForm.classList.remove('active');
+        registerForm.classList.remove('active');
+    }
+
+    let registerForm = document.querySelector('.register-form');
+
+    document.querySelector('#go-register').onclick = () =>{
+        navbar.classList.remove('active');
+        searchForm.classList.remove('active');
+        shoppingCart.classList.remove('active');
+        loginForm.classList.remove('active');
+        registerForm.classList.toggle('active');
     }
     
     window.onscroll = () =>{
@@ -40,5 +54,66 @@ $('.header').load('header.html', function(){
         shoppingCart.classList.remove('active');
         loginForm.classList.remove('active');
         navbar.classList.remove('active');
-    }    
+        registerForm.classList.remove('active');
+    }
+
+    $('#register-btn').on('click', function() {
+        if ($('#regAccount').val().length === 0){
+            window.alert('請輸入帳號!')
+            $('#regAccount').focus()
+            return
+        }else if ($('#regPassword').val().length === 0){
+            window.alert('請輸入密碼!')
+            $('#regPassword').focus()
+            return
+        }else if ($('#regName').val().length === 0){
+            window.alert('請輸入姓名!')
+            $('#regName').focus()
+            return
+        }else if ($('#regEmail').val().length === 0){
+            window.alert('請輸入信箱!')
+            $('#regEmail').focus()
+            return
+        }else if ($('#regPhone').val().length === 0){
+            window.alert('請輸入電話!')
+            $('#phoneIregPhonenput').focus()
+            return
+        }else if ($('#regAddress').val().length === 0){
+            window.alert('請輸入地址!')
+            $('#regAddress').focus()
+            return
+        }
+
+
+        let dataUrl = "http://172.16.82.2:9090/user/createUser"
+        let jsonData = {
+            userAccount: $('#regAccount').val(),
+            userPassword: $('#regPassword').val(),
+            userName: $('#regName').val(),
+            userEmail: $('#regEmail').val(),
+            userPhone: $('#regPhone').val(),
+            userAddress: $('#regAddress').val(),
+        }
+        console.log(jsonData)
+
+        $.ajax({
+            url: dataUrl,
+            method: 'POST',
+            dataType: 'text',
+            data: JSON.stringify(jsonData),
+            async: true,
+            contentType: 'application/json;charset=utf-8',
+            cache: false,
+
+            success: res => {
+                window.alert(res)
+            },
+
+            error: err => {
+                console.log(err)
+                window.alert("註冊失敗!")
+            },
+        });
+    })
+
 })
