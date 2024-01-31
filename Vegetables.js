@@ -1,6 +1,6 @@
 function getByTag(){
     // var dataUrl = "http://172.16.82.2:9090/com/getAll"
-    var dataUrl = "http://localhost:9090/com/getByTag?tag=狗"
+    var dataUrl = "http://localhost:9090/com/getByTag?tag=蔬菜"
 
     $('#com-list').empty();
     $.ajax({
