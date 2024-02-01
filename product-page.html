@@ -20,7 +20,7 @@
 
     <!-- Vegetables.js 取得商品 -->
     <script src='Vegetables.js'></script>
-    
+
 </head>
 
 <body>
@@ -179,22 +179,25 @@
 
 <!-- JQuery程式 -->
 <script>
-    // 每個頁面要顯示幾格項目
-    var perPage = 4;
-    // 總共有多少個項目
-    var numItems = $(".list-item").length;
-     
-    $(".list-item").slice(perPage).hide();
-    $('#pagination-container').pagination({
-        items: numItems,
-        itemsOnPage: perPage,
-        prevText: "&laquo;",
-        nextText: "&raquo;",
-        onPageClick: function(pageNumber){
-            // 計算 起始以及結束
-            var from = perPage * (pageNumber - 1);
-            var to = from + perPage;
-            $(".list-item").hide().slice(from, to).show();
-        }
-    })
+    function setpage() {
+        // 每個頁面要顯示幾格項目
+        var perPage = 4;
+        // 總共有多少個項目
+        var numItems = $(".list-item").length;
+
+        $(".list-item").slice(perPage).hide();
+        $('#pagination-container').pagination({
+            items: numItems,
+            itemsOnPage: perPage,
+            prevText: "&laquo;",
+            nextText: "&raquo;",
+            onPageClick: function(pageNumber){
+                // 計算 起始以及結束
+                var from = perPage * (pageNumber - 1);
+                var to = from + perPage;
+                $(".list-item").hide().slice(from, to).show();
+            }
+        })
+    }
+    
 </script>

@@ -24,6 +24,7 @@ function getByTag(){
                                        '</div>'
                                       );
             })
+            setpage()
         },
     // <div class="list-item">
     //     <div class="one-product">
