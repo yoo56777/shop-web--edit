@@ -53,14 +53,23 @@
     <a href="#" class="btn">checkout</a>
 </div>
 
-<form action="" class="login-form">
-    <h3>login now</h3>
-    <input id="loginAccount" type="text" placeholder="your account" class="box">
-    <input id="loginPassword" type="password" placeholder="your password" class="box">
-    <p><a href="#">忘記密碼</a></p>
-    <p>還不是會員?&nbsp;<button id="go-register" type="button">註冊</button>
-    </p>
-    <input id="login" type="button" placeholder="login now" class="btn" value="登入">
+<form action="" class="login-form" onsubmit="return false;">
+    <div id="login-input-area" style="display: block">
+        <h3>login now</h3>
+        <input id="loginAccount" type="text" placeholder="your account" class="box">
+        <input id="loginPassword" type="password" placeholder="your password" class="box">
+        <p><a href="#">忘記密碼</a></p>
+        <p>還不是會員?&nbsp;<button id="go-register" type="button">註冊</button>
+        </p>
+        <button id="login" type="submit" placeholder="login now" class="btn">登入</button>
+    </div>
+    <div id="login-user-area" style="display: none;">
+        <div style="width: 100%;">
+            <img class="circleImg" src="image/博美1.jpg"  />
+        </div>
+        <p><a href="#">檢視個人檔案</a></p>
+        <button id="logout" type="button" placeholder="logout now" class="btn">登出</button>
+    </div>
 </form>    
 
 <form action="" class="register-form" onsubmit="return false;">

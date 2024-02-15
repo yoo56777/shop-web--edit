@@ -58,7 +58,7 @@ $('.header').load('header.html', function(){
     }
 
     $('.register-form').on('submit', function() {
-        let dataUrl = "http://172.16.82.2:9090/user/createUser"
+        let dataUrl = "http://127.0.0.1:9090/user/createUser"
         let jsonData = {
             userAccount: $('#regAccount').val(),
             userPassword: $('#regPassword').val(),
@@ -88,4 +88,81 @@ $('.header').load('header.html', function(){
         });
     })
 
+    $('.login-form').on('submit', function() {
+        let dataUrl = "http://127.0.0.1:9090/user/userLogin"
+        let jsonData = {
+            userAccount: $('#loginAccount').val(),
+            userPassword: $('#loginPassword').val()
+        }
+
+        $.ajax({
+            url: dataUrl,
+            method: 'POST',
+            dataType: 'text',
+            data: JSON.stringify(jsonData),
+            async: true,
+            contentType: 'application/json;charset=utf-8',
+            cache: false,
+
+            success: res => {
+                localStorage.setItem("token", res)
+                window.alert("登入成功!")
+                location.reload()
+            },
+
+            error: err => {
+                window.alert(err.responseText)
+            },
+        });     
+    })
+
+    $(document).ready(()=>{
+        var jwt = localStorage.getItem("token")
+        if (jwt == null){
+            $('#login-input-area').show()
+            $('#login-user-area').hide()
+        }else{
+            let dataUrl = "http://127.0.0.1:9090/user/userVerify"            
+
+            $.ajax({
+                url: dataUrl,
+                method: 'POST',
+                dataType: 'text',
+                async: true,
+                contentType: 'application/json;charset=utf-8',
+                cache: false,
+                headers: {
+                    "Authorization" : "Bearer " + jwt
+                },
+    
+                success: res => {
+                    if (res == "0000"){
+                        $('#login-input-area').hide()
+                        $('#login-user-area').show()
+                    }else{
+                        if (res == "0001"){
+                            window.alert("驗證失敗，請重新登入!")
+                        }else if (res == "0002"){
+                            window.alert("token過期，請重新登入!")
+                        }else if (res == "9999"){
+                            window.alert("請重新登入!")
+                        }
+                        $('#login-input-area').show()
+                        $('#login-user-area').hide()
+                        localStorage.removeItem("token")
+                    }
+                },
+    
+                error: err => {
+                    $('#login-input-area').show()
+                    $('#login-user-area').hide()                
+                },
+            });   
+        }        
+    })
+
+    $('#logout').on('click', ()=>{
+        localStorage.removeItem('token')
+        location.reload()
+    })
 })
