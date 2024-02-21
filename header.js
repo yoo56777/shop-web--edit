@@ -140,13 +140,6 @@ $('.header').load('header.html', function(){
                         $('#login-input-area').hide()
                         $('#login-user-area').show()
                     }else{
-                        if (res == "0001"){
-                            window.alert("驗證失敗，請重新登入!")
-                        }else if (res == "0002"){
-                            window.alert("token過期，請重新登入!")
-                        }else if (res == "9999"){
-                            window.alert("請重新登入!")
-                        }
                         $('#login-input-area').show()
                         $('#login-user-area').hide()
                         localStorage.removeItem("token")
@@ -155,14 +148,14 @@ $('.header').load('header.html', function(){
     
                 error: err => {
                     $('#login-input-area').show()
-                    $('#login-user-area').hide()                
+                    $('#login-user-area').hide()
                 },
             });   
         }        
     })
 
     $('#logout').on('click', ()=>{
-        localStorage.removeItem('token')
+        localStorage.removeItem("token")
         location.reload()
     })
 })
