@@ -117,6 +117,7 @@ $('.header').load('header.html', function(){
     })
 
     $(document).ready(()=>{
+        //先驗證是否登入
         var jwt = localStorage.getItem("token")
         if (jwt == null){
             $('#login-input-area').show()
@@ -151,7 +152,32 @@ $('.header').load('header.html', function(){
                     $('#login-user-area').hide()
                 },
             });   
-        }        
+        }
+
+        //購物車清單
+        let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
+        if (cartMap != null){
+            cartMap.forEach((value, key)=>{
+                $('#cartArea').append('<div class="box">'+
+                                          '<i class="fas fa-trash"></i>'+
+                                          '<img src="image/product'+key+'.jpg" alt="">'+
+                                          '<div class="content">'+
+                                              '<h3>watermalon</h3>'+
+                                              '<span class="price">$100/-</span>'+
+                                              '<span class="quantity">qty : '+value+'</span>'+
+                                          '</div>'+
+                                      '</div>')
+            })
+        }
+        // <div class="box">
+        //     <i class="fas fa-trash"></i>
+        //     <img src="image/product1.jpg" alt="">
+        //     <div class="content">
+        //         <h3>watermalon</h3>
+        //         <span class="price">$4.99/-</span>
+        //         <span class="quantity">qty : 1</span>
+        //     </div>
+        // </div>        
     })
 
     $('#logout').on('click', ()=>{
