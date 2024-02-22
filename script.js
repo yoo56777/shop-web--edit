@@ -20,7 +20,7 @@ var swiper = new Swiper(".product-slider", {
 });
 
 //新增商品到購物車事件
-function addCart(obj){
+function addCartBtn(obj){
 // $('.addCartBtn').on('click',(event)=>{
     //用Map裝購物車商品，Map([商品ID, 商品數量])
     let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))

@@ -154,22 +154,12 @@ $('.header').load('header.html', function(){
             });   
         }
 
-        updateCart()
-    })
-
-    $('#logout').on('click', ()=>{
-        localStorage.removeItem("token")
-        location.reload()
-    })
-
-    function updateCart(){
-        //更新購物車清單
+        //購物車清單
         let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
         if (cartMap != null){
             cartMap.forEach((value, key)=>{
                 $('#cartArea').append('<div class="box">'+
-                                          '<p style="display: none;">'+key+'</p>'+
-                                          '<div class="fas fa-trash" onclick="removeCart(this)"></div>'+
+                                          '<i class="fas fa-trash" onclick="removeCart(this)"></i>'+
                                           '<img src="image/product'+key+'.jpg" alt="">'+
                                           '<div class="content">'+
                                               '<h3>watermalon</h3>'+
@@ -178,6 +168,20 @@ $('.header').load('header.html', function(){
                                           '</div>'+
                                       '</div>')
             })
-        }     
-    }
+        }
+        // <div class="box">
+        //     <i class="fas fa-trash"></i>
+        //     <img src="image/product1.jpg" alt="">
+        //     <div class="content">
+        //         <h3>watermalon</h3>
+        //         <span class="price">$4.99/-</span>
+        //         <span class="quantity">qty : 1</span>
+        //     </div>
+        // </div>        
+    })
+
+    $('#logout').on('click', ()=>{
+        localStorage.removeItem("token")
+        location.reload()
+    })
 })
