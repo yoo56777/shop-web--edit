@@ -16,10 +16,11 @@ function getByTag(){
             $.each(resList, function(i, n){
                 $('#list-wrapper').append('<div class="list-item">'+
                                            '<div class="one-product">'+
+                                                '<p style="display: none;">'+n.commodityID+'</p>'+
                                                 '<img src='+n.commodityImgPath+' alt="">'+
                                                 '<h3>'+n.commodityName+'</h3>'+
                                                 '<div class="price"> $ '+n.commodityPrice+'</div>'+
-                                                '<a href="#" class="btn">add to cart</a>'+
+                                                '<button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>'+
                                             '</div>'+
                                        '</div>'
                                       );

@@ -57,35 +57,8 @@ $('.header').load('header.html', function(){
         registerForm.classList.remove('active');
     }
 
-    $('#register-btn').on('click', function() {
-        if ($('#regAccount').val().length === 0){
-            window.alert('請輸入帳號!')
-            $('#regAccount').focus()
-            return
-        }else if ($('#regPassword').val().length === 0){
-            window.alert('請輸入密碼!')
-            $('#regPassword').focus()
-            return
-        }else if ($('#regName').val().length === 0){
-            window.alert('請輸入姓名!')
-            $('#regName').focus()
-            return
-        }else if ($('#regEmail').val().length === 0){
-            window.alert('請輸入信箱!')
-            $('#regEmail').focus()
-            return
-        }else if ($('#regPhone').val().length === 0){
-            window.alert('請輸入電話!')
-            $('#phoneIregPhonenput').focus()
-            return
-        }else if ($('#regAddress').val().length === 0){
-            window.alert('請輸入地址!')
-            $('#regAddress').focus()
-            return
-        }
-
-
-        let dataUrl = "http://172.16.82.2:9090/user/createUser"
+    $('.register-form').on('submit', function() {
+        let dataUrl = "http://127.0.0.1:9090/user/createUser"
         let jsonData = {
             userAccount: $('#regAccount').val(),
             userPassword: $('#regPassword').val(),
@@ -94,7 +67,6 @@ $('.header').load('header.html', function(){
             userPhone: $('#regPhone').val(),
             userAddress: $('#regAddress').val(),
         }
-        console.log(jsonData)
 
         $.ajax({
             url: dataUrl,
@@ -116,4 +88,100 @@ $('.header').load('header.html', function(){
         });
     })
 
+    $('.login-form').on('submit', function() {
+        let dataUrl = "http://127.0.0.1:9090/user/userLogin"
+        let jsonData = {
+            userAccount: $('#loginAccount').val(),
+            userPassword: $('#loginPassword').val()
+        }
+
+        $.ajax({
+            url: dataUrl,
+            method: 'POST',
+            dataType: 'text',
+            data: JSON.stringify(jsonData),
+            async: true,
+            contentType: 'application/json;charset=utf-8',
+            cache: false,
+
+            success: res => {
+                localStorage.setItem("token", res)
+                window.alert("登入成功!")
+                location.reload()
+            },
+
+            error: err => {
+                window.alert(err.responseText)
+            },
+        });     
+    })
+
+    $(document).ready(()=>{
+        //先驗證是否登入
+        var jwt = localStorage.getItem("token")
+        if (jwt == null){
+            $('#login-input-area').show()
+            $('#login-user-area').hide()
+        }else{
+            let dataUrl = "http://127.0.0.1:9090/user/userVerify"            
+
+            $.ajax({
+                url: dataUrl,
+                method: 'POST',
+                dataType: 'text',
+                async: true,
+                contentType: 'application/json;charset=utf-8',
+                cache: false,
+                headers: {
+                    "Authorization" : "Bearer " + jwt
+                },
+    
+                success: res => {
+                    if (res == "0000"){
+                        $('#login-input-area').hide()
+                        $('#login-user-area').show()
+                    }else{
+                        $('#login-input-area').show()
+                        $('#login-user-area').hide()
+                        localStorage.removeItem("token")
+                    }
+                },
+    
+                error: err => {
+                    $('#login-input-area').show()
+                    $('#login-user-area').hide()
+                },
+            });   
+        }
+
+        //購物車清單
+        let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
+        if (cartMap != null){
+            cartMap.forEach((value, key)=>{
+                $('#cartArea').append('<div class="box">'+
+                                          '<i class="fas fa-trash"></i>'+
+                                          '<img src="image/product'+key+'.jpg" alt="">'+
+                                          '<div class="content">'+
+                                              '<h3>watermalon</h3>'+
+                                              '<span class="price">$100/-</span>'+
+                                              '<span class="quantity">qty : '+value+'</span>'+
+                                          '</div>'+
+                                      '</div>')
+            })
+        }
+        // <div class="box">
+        //     <i class="fas fa-trash"></i>
+        //     <img src="image/product1.jpg" alt="">
+        //     <div class="content">
+        //         <h3>watermalon</h3>
+        //         <span class="price">$4.99/-</span>
+        //         <span class="quantity">qty : 1</span>
+        //     </div>
+        // </div>        
+    })
+
+    $('#logout').on('click', ()=>{
+        localStorage.removeItem("token")
+        location.reload()
+    })
 })
