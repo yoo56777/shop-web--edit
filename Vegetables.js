@@ -1,13 +1,17 @@
 function getByTag(){
     // var dataUrl = "http://172.16.82.2:9090/com/getAll"
-    var dataUrl = "http://localhost:9090/com/getByTag?tag=蔬菜"
+    var dataUrl = "http://localhost:9090/com/getByTag?tag="
+    var url = new URL(location.href);
+    var tag = url.searchParams.get('tag');
+    dataUrl += tag
+    // var userdata = { id : id }
 
     $('#com-list').empty();
     $.ajax({
         url: dataUrl,
         method: 'GET',
         dataType: 'text',
-        data: '',
+        // data: userdata,
         async: true,
 
         success: res => {
