@@ -31,9 +31,9 @@
 
 <div class="cart">
     <div class="top">
-        <p style="font-size:24px;">訂單查詢</p>
+        <p style="font-size:22px;">購買資料</p>
     </div>
-    <table>
+    <!-- <table>
         <span style="font-size:18px;"> 訂單編號：
         <select style="font-size:18px; margin-bottom: 20px;">
             <option>您的訂單編號</option>
@@ -69,6 +69,27 @@
     </table>
     <div class="foot">
         <button>問題回報</button>
+    </div> -->
+    <form action="/formprocess.php" method="post">
+
+        <p>訂購人:</p>
+        <p><input type="text" name="name"></p>
+    
+        <p>送貨地址:</p>
+        <p><textarea name="address" rows="2" cols="22"></textarea></p>
+    
+        <p>送貨方式: </p>
+        <p><input type="radio" name="delivery" value="html"> 7-11</p>
+        <p><input type="radio" name="delivery" value="css"> 全家</p>
+        <p><input type="radio" name="delivery" value="js"> 宅配</p>
+    
+        <p>付款方式:</p>
+        <p><input type="radio" name="payment" value="html"> 貨到付款</p>
+        <p><input type="radio" name="payment" value="css"> 線上刷卡</p>
+        <p><input type="radio" name="payment" value="js"> 匯款</p>
+    </form>
+    <div class="foot">
+        <button>送出資料</button>
     </div>
 </div>
 
