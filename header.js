@@ -58,7 +58,7 @@ $('.header').load('header.html', function(){
     }
 
     $('.register-form').on('submit', function() {
-        let dataUrl = "http://127.0.0.1:9090/user/createUser"
+        let dataUrl = "http://172.16.82.2:9090/user/createUser"
         let jsonData = {
             userAccount: $('#regAccount').val(),
             userPassword: $('#regPassword').val(),
@@ -89,7 +89,7 @@ $('.header').load('header.html', function(){
     })
 
     $('.login-form').on('submit', function() {
-        let dataUrl = "http://127.0.0.1:9090/user/userLogin"
+        let dataUrl = "http://172.16.82.2:9090/user/userLogin"
         let jsonData = {
             userAccount: $('#loginAccount').val(),
             userPassword: $('#loginPassword').val()
@@ -123,7 +123,7 @@ $('.header').load('header.html', function(){
             $('#login-input-area').show()
             $('#login-user-area').hide()
         }else{
-            let dataUrl = "http://127.0.0.1:9090/user/userVerify"            
+            let dataUrl = "http://172.16.82.2:9090/user/userVerify"            
 
             $.ajax({
                 url: dataUrl,
@@ -158,26 +158,19 @@ $('.header').load('header.html', function(){
         let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
         if (cartMap != null){
             cartMap.forEach((value, key)=>{
-                $('#cartArea').append('<div class="box">'+
+                $('#cartArea').append('<div class="box" id="'+key+'">'+
+                                          '<p style="display: none;">'+key+'</p>'+
                                           '<i class="fas fa-trash" onclick="removeCart(this)"></i>'+
-                                          '<img src="image/product'+key+'.jpg" alt="">'+
+                                          '<img src="'+value[3]+'" alt="">'+
                                           '<div class="content">'+
-                                              '<h3>watermalon</h3>'+
-                                              '<span class="price">$100/-</span>'+
-                                              '<span class="quantity">qty : '+value+'</span>'+
+                                              '<h3>'+value[0]+'</h3>'+
+                                              '<span class="price">$'+value[1]*value[2]+'/-</span>'+
+                                              '<span class="quantity">qty : '+value[1]+'</span>'+
                                           '</div>'+
                                       '</div>')
             })
-        }
-        // <div class="box">
-        //     <i class="fas fa-trash"></i>
-        //     <img src="image/product1.jpg" alt="">
-        //     <div class="content">
-        //         <h3>watermalon</h3>
-        //         <span class="price">$4.99/-</span>
-        //         <span class="quantity">qty : 1</span>
-        //     </div>
-        // </div>        
+        } 
+        updateCartTotal()
     })
 
     $('#logout').on('click', ()=>{
