@@ -58,7 +58,7 @@ $('.header').load('header.html', function(){
     }
 
     $('.register-form').on('submit', function() {
-        let dataUrl = "http://172.16.82.2:9090/user/createUser"
+        let dataUrl = "http://127.0.0.1:9090/user/createUser"
         let jsonData = {
             userAccount: $('#regAccount').val(),
             userPassword: $('#regPassword').val(),
@@ -89,7 +89,7 @@ $('.header').load('header.html', function(){
     })
 
     $('.login-form').on('submit', function() {
-        let dataUrl = "http://172.16.82.2:9090/user/userLogin"
+        let dataUrl = "http://127.0.0.1:9090/user/userLogin"
         let jsonData = {
             userAccount: $('#loginAccount').val(),
             userPassword: $('#loginPassword').val()
@@ -123,7 +123,7 @@ $('.header').load('header.html', function(){
             $('#login-input-area').show()
             $('#login-user-area').hide()
         }else{
-            let dataUrl = "http://172.16.82.2:9090/user/userVerify"            
+            let dataUrl = "http://127.0.0.1:9090/user/userVerify"            
 
             $.ajax({
                 url: dataUrl,

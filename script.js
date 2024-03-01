@@ -85,7 +85,7 @@ function updateCartTotal(){
 //網頁載入完成後處理
 $(()=>{
     //查詢優惠商品
-    let dataUrl = "http://172.16.82.2:9090/com/getDiscountCom"
+    let dataUrl = "http://127.0.0.1:9090/com/getDiscountCom"
 
     $.ajax({
         url: dataUrl,
@@ -124,7 +124,7 @@ $(()=>{
     });
 
     //查詢全部分類
-    dataUrl = "http://172.16.82.2:9090/tag/getAll"
+    dataUrl = "http://127.0.0.1:9090/tag/getAll"
 
     $.ajax({
         url: dataUrl,
@@ -138,7 +138,7 @@ $(()=>{
             $.each(res, (i, n) => {
                 let tagImgSrc = ""
                 $.ajax({
-                    url: "http://172.16.82.2:9090/com/getByTag?tag=" + n.commoditySubTag,
+                    url: "http://127.0.0.1:9090/com/getByTag?tag=" + n.commoditySubTag,
                     method: 'GET',
                     dataType: 'json',
                     async: false,
