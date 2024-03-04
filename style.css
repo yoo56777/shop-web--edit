@@ -873,3 +873,10 @@ table tr td p{
     width:10em;
     height:10em;
 }
+
+.checkout{
+    font-size: 2rem;
+    width: 360px;
+    display: flex;
+    justify-content: space-between;
+}
