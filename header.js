@@ -106,6 +106,7 @@ $('.header').load('header.html', function(){
 
             success: res => {
                 localStorage.setItem("token", res)
+                localStorage.setItem("account", $('#loginAccount').val())
                 window.alert("登入成功!")
                 location.reload()
             },
