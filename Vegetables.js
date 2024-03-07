@@ -1,10 +1,12 @@
 function getByTag(){
-    // var dataUrl = "http://172.16.82.2:9090/com/getAll"
-    var dataUrl = "http://localhost:9090/com/getByTag?tag="
+    // var dataUrl = "http://127.0.0.1:9090/com/getAll"
+    var dataUrl = "http://127.0.0.1:9090/com/getByTag?tag="
     var url = new URL(location.href);
     var tag = url.searchParams.get('tag');
     dataUrl += tag
+    $('#tagTitle').text(tag)
     // var userdata = { id : id }
+
 
     $('#com-list').empty();
     $.ajax({
