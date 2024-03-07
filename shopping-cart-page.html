@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="style.css">;
     <!-- Jquery JavaScript 文件 -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>   
+    <!-- shopping-cart-page.js 取得購物車商品 -->
+    <script src='shopping-cart-page.js'></script>
 </head>
 
 <body>
@@ -42,7 +44,8 @@
             <td>總價</td>
             <td>動作</td>
         </tr>
-        <tr>
+        <div id="cart">
+        <!-- <tr>
             <td><input type="checkbox"id="check"></td>
             <td><img src="image/product1.jpg"></td>
             <td>商品一</td>   
@@ -59,8 +62,8 @@
             <td><button class="cal">-</button><input type="text" readonly><button class="cal">+</button></td>
             <td class="total">0</td>
             <td><p class="del">刪除</p></td>
-        </tr>
-        
+        </tr> -->
+        </div>
     </table>
     <div class="foot">
         <span>商品總計：</span><span class="sumTotal"></span><a href="checkout.html"><button>結帳</button></a>
@@ -128,6 +131,7 @@
 </html>
 
 <script>
+function change(){
     //刪除
     let _del=document.querySelectorAll('.del');
     [..._del].forEach(_del=>{
@@ -185,4 +189,5 @@
         })
         _sumTotal.innerHTML=sumTotal
     }
+}
 </script>

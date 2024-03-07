@@ -106,6 +106,7 @@ $('.header').load('header.html', function(){
 
             success: res => {
                 localStorage.setItem("token", res)
+                localStorage.setItem("account", $('#loginAccount').val())
                 window.alert("登入成功!")
                 location.reload()
             },
@@ -158,26 +159,19 @@ $('.header').load('header.html', function(){
         let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
         if (cartMap != null){
             cartMap.forEach((value, key)=>{
-                $('#cartArea').append('<div class="box">'+
-                                          '<i class="fas fa-trash"></i>'+
-                                          '<img src="image/product'+key+'.jpg" alt="">'+
+                $('#cartArea').append('<div class="box" id="'+key+'">'+
+                                          '<p style="display: none;">'+key+'</p>'+
+                                          '<i class="fas fa-trash" onclick="removeCart(this)"></i>'+
+                                          '<img src="'+value[3]+'" alt="">'+
                                           '<div class="content">'+
-                                              '<h3>watermalon</h3>'+
-                                              '<span class="price">$100/-</span>'+
-                                              '<span class="quantity">qty : '+value+'</span>'+
+                                              '<h3>'+value[0]+'</h3>'+
+                                              '<span class="price">$'+value[1]*value[2]+'/-</span>'+
+                                              '<span class="quantity">qty : '+value[1]+'</span>'+
                                           '</div>'+
                                       '</div>')
             })
-        }
-        // <div class="box">
-        //     <i class="fas fa-trash"></i>
-        //     <img src="image/product1.jpg" alt="">
-        //     <div class="content">
-        //         <h3>watermalon</h3>
-        //         <span class="price">$4.99/-</span>
-        //         <span class="quantity">qty : 1</span>
-        //     </div>
-        // </div>        
+        } 
+        updateCartTotal()
     })
 
     $('#logout').on('click', ()=>{

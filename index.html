@@ -68,40 +68,40 @@
 <section class="products" id="products">
     <h1 class="heading"> <span>優惠商品</span> </h1>
 
-    <div class="swiper product-slider">
+    <!-- <div class="swiper product-slider">
 
         <div class="swiper-wrapper">
 
             <div class="swiper-slide box">
-                <p style="display: none;">1</p> <!--商品ID-->
+                <p style="display: none;">1</p>
                 <img src="image/product1.jpg" alt="">
                 <h3>watermalon</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
 
             <div class="swiper-slide box">
-                <p style="display: none;">2</p> <!--商品ID-->
+                <p style="display: none;">2</p>
                 <img src="image/product2.jpg" alt="">
                 <h3>onion</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
 
             <div class="swiper-slide box">
-                <p style="display: none;">3</p> <!--商品ID-->
+                <p style="display: none;">3</p>
                 <img src="image/product3.jpg" alt="">
                 <h3>chicken</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
 
             <div class="swiper-slide box">
-                <p style="display: none;">4</p> <!--商品ID-->
+                <p style="display: none;">4</p>
                 <img src="image/product4.jpg" alt="">
                 <h3>cabbage</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
         
         </div>
@@ -113,40 +113,40 @@
         <div class="swiper-wrapper">
 
             <div class="swiper-slide box">
-                <p style="display: none;">5</p> <!--商品ID-->
+                <p style="display: none;">5</p>
                 <img src="image/product5.jpg" alt="">
                 <h3>potato</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
 
             <div class="swiper-slide box">
-                <p style="display: none;">6</p> <!--商品ID-->
+                <p style="display: none;">6</p>
                 <img src="image/product6.jpg" alt="">
                 <h3>avocado</h3>
                 <div class="price"> $ 100</div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
 
             <div class="swiper-slide box">
-                <p style="display: none;">7</p> <!--商品ID-->
+                <p style="display: none;">7</p>
                 <img src="image/product7.jpg" alt="">
                 <h3>carrot</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
 
             <div class="swiper-slide box">
-                <p style="display: none;">8</p> <!--商品ID-->
+                <p style="display: none;">8</p>
                 <img src="image/product8.jpg" alt="">
                 <h3>green lemon</h3>
                 <div class="price"> $ 100 </div>
-                <a href="#" class="btn addCartBtn">add to cart</a>
+                <button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>
             </div>
         
         </div>
     
-    </div>
+    </div> -->
 
 </section>
 
@@ -158,9 +158,9 @@
 
     <h1 class="heading"> <span>商品分類</span> </h1>
 
-    <div class="box-container">
+    <div class="box-container" id="tags">
 
-        <div class="box">
+        <!-- <div class="box">
             <img src="image/categories1.jpg" alt="">
             <h3>vegetables</h3>
             <p>upto 45% off</p>
@@ -186,7 +186,7 @@
             <h3>fresh meat</h3>
             <p>upto 45% off</p>
             <a href="product-page.html?tag=肉品" class="btn">shop now</a>
-        </div>
+        </div> -->
 
     </div>
 
@@ -345,4 +345,90 @@
     }
 
     refresh()
+    //網頁載入完成後處理
+    $(()=>{
+        //查詢優惠商品
+        let dataUrl = "http://127.0.0.1:9090/com/getDiscountCom"
+    
+        $.ajax({
+            url: dataUrl,
+            method: 'GET',
+            dataType: 'json',
+            async: true,
+            contentType: 'application/json;charset=utf-8',
+            cache: false,
+        
+            success: res => {
+                let rows = Math.ceil(res.length) / 4 //有幾行，每行4個商品，無條件進位
+                for (let i = 0; i < rows; i++) {
+                    $('#products').append('<div class="swiper product-slider">'+
+                                          '<div class="swiper-wrapper" id="swiper' + i + '">')
+                    let swiper = $('#swiper' + i)
+                    for (let j = 0; j < 4; j++) {
+                        let num = j + i * 4
+                        let item = res[num]
+                        $(swiper).append('<div class="swiper-slide box">'+
+                                             '<p style="display: none;">'+item.commodityID+'</p>'+
+                                             '<img src="'+item.commodityImgPath+'" alt="">'+
+                                             '<h3>'+item.commodityName+'</h3>'+
+                                             '<div class="price"> $ '+item.commodityPrice+' </div>'+
+                                             '<button class="btn addCartBtn" onclick="addCartBtn(this)">add to cart</button>'+
+                                         '</div>')
+                    }
+                    $('#products').append('</div>'+
+                                          '</div>')
+                }
+                swiperOn()          
+            },
+        
+            error: err => {
+                console.log(err)
+            },
+        });
+    
+        //查詢全部分類
+        dataUrl = "http://127.0.0.1:9090/tag/getAll"
+    
+        $.ajax({
+            url: dataUrl,
+            method: 'GET',
+            dataType: 'json',
+            async: true,
+            contentType: 'application/json;charset=utf-8',
+            cache: false,
+        
+            success: res => {
+                $.each(res, (i, n) => {
+                    let tagImgSrc = ""
+                    $.ajax({
+                        url: "http://127.0.0.1:9090/com/getByTag?tag=" + n.commoditySubTag,
+                        method: 'GET',
+                        dataType: 'json',
+                        async: false,
+                        contentType: 'application/json;charset=utf-8',
+                        cache: false,
+                        success: res => {
+                            tagImgSrc = res[0].commodityImgPath
+                            $('#tags').append(
+                                '<div class="box">' +
+                                '<img src="' + tagImgSrc + '" alt="">' +
+                                '<h3>' + n.commoditySubTag + '</h3>' +
+                                '<p>upto 45% off</p>' +
+                                '<a href="product-page.html?tag=' + n.commoditySubTag + '" class="btn">shop now</a>' +
+                                '</div>'
+                            )
+                        },
+                    
+                        error: err => {
+                            tagImgSrc = ""
+                        },
+                    })
+                })
+            },
+        
+            error: err => {
+                console.log(err)
+            },
+        });
+    })    
 </script>
