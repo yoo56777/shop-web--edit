@@ -133,12 +133,19 @@
 
 <script>
 function change(){
+    let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
+    console.log(cartMap)
     //刪除
     let _del=document.querySelectorAll('.del');
     [..._del].forEach(_del=>{
-        _del.onclick=function(){
+        _del.onclick=function(event){
+            let comId = Number($(event.target).parent().parent().children().eq(0).text())
+            console.log(comId)
+            cartMap.delete(comId)
+            localStorage.setItem("cartMap", JSON.stringify(Array.from(cartMap.entries())))
             _del.parentNode.parentNode.remove()
             sumTotal()
+            location.reload()
         }
     });
     //單價

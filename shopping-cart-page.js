@@ -42,6 +42,7 @@
             cartMap.forEach((value, key)=>{
                 $('table').append( 
                     '<tr>'+
+                    '<td style="display: none;">'+key+'</td>'+
                     '<td><input type="checkbox"id="check"></td>'+
                     '<td><img src="'+value[3]+'".jpg"></td>'+
                     '<td>'+value[0]+'</td>'+   
