@@ -34,6 +34,7 @@
     <div class="top">
         <p style="font-size:24px;">購物車</p>
     </div>
+
     <table>
         <tr> 
             <td><input type="checkbox"id="all"></td>
@@ -44,29 +45,29 @@
             <td>總價</td>
             <td>動作</td>
         </tr>
-        <div id="cart">
-        <!-- <tr>
-            <td><input type="checkbox"id="check"></td>
-            <td><img src="image/product1.jpg"></td>
-            <td>商品一</td>   
-            <td>199</td>
-            <td><button class="cal">-</button><input type="text" readonly><button class="cal">+</button></td>
-            <td class="total">0</td>
-            <td><p class="del">刪除</p></td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"id="check"></td>
-            <td><img src="image/product2.jpg"></td>
-            <td>商品二</td>   
-            <td>299</td>
-            <td><button class="cal">-</button><input type="text" readonly><button class="cal">+</button></td>
-            <td class="total">0</td>
-            <td><p class="del">刪除</p></td>
-        </tr> -->
+        <div id="cartTable">
+            <!-- <tr>
+                <td><input type="checkbox"id="check"></td>
+                <td><img src="image/product1.jpg"></td>
+                <td>商品一</td>   
+                <td>199</td>
+                <td><button class="cal">-</button><input type="text" readonly><button class="cal">+</button></td>
+                <td class="total">0</td>
+                <td><p class="del">刪除</p></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"id="check"></td>
+                <td><img src="image/product2.jpg"></td>
+                <td>商品二</td>   
+                <td>299</td>
+                <td><button class="cal">-</button><input type="text" readonly><button class="cal">+</button></td>
+                <td class="total">0</td>
+                <td><p class="del">刪除</p></td>
+            </tr>        -->
         </div>
     </table>
     <div class="foot">
-        <span>商品總計：</span><span class="sumTotal"></span><a href="checkout.html"><button>結帳</button></a>
+        <span>商品總計：</span><span class="sumTotal"></span><a href="checkout.html"><button onclick="sendOrder()">結帳</button></a>
     </div>
 </div>
 <!-- cart section ends -->
@@ -185,7 +186,7 @@ function change(){
         let _checkedboxes=document.querySelectorAll('input:checked:not(#all)')
         let sumTotal=0
         _checkedboxes.forEach(_checkedbox=>{
-            sumTotal+=_checkedbox.parentNode.parentNode.children[5].innerText * 1
+            sumTotal+=_checkedbox.parentNode.parentNode.children[5].innerText * 1 
         })
         _sumTotal.innerHTML=sumTotal
     }

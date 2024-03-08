@@ -40,50 +40,26 @@
         let cartMap = new Map(JSON.parse(localStorage.getItem("cartMap")))
         if (cartMap != null){
             cartMap.forEach((value, key)=>{
-                $('#cart').append( 
+                $('table').append( 
                     '<tr>'+
                     '<td><input type="checkbox"id="check"></td>'+
-                    '<td><img src="image/product'+key+'.jpg"></td>'+
-                    '<td>商品一</td>'+   
-                    '<td>199</td>'+
-                    '<td><button class="cal">-</button><input type="text" value="'+value+'" readonly><button class="cal">+</button></td>'+
-                    '<td class="total">0</td>'+
+                    '<td><img src="'+value[3]+'".jpg"></td>'+
+                    '<td>'+value[0]+'</td>'+   
+                    '<td>'+value[2]+'</td>'+
+                    '<td><button class="cal">-</button><input type="text" value="'+value[1]+'" readonly><button class="cal">+</button></td>'+
+                    '<td class="total">'+value[2] * value[1] +'</td>'+
                     '<td><p class="del">刪除</p></td>'+
                     '</tr>'
                 )
             })
         change()
         }
-        // <div class="box">
-        //     <i class="fas fa-trash"></i>
-        //     <img src="image/product1.jpg" alt="">
-        //     <div class="content">
-        //         <h3>watermalon</h3>
-        //         <span class="price">$4.99/-</span>
-        //         <span class="quantity">qty : 1</span>
-        //     </div>
-        // </div>        
     })
 
     $('#logout').on('click', ()=>{
         localStorage.removeItem("token")
         location.reload()
     })
-
-
-
-
-// '<div class="box">'+
-// '<i class="fas fa-trash"></i>'+
-// '<img src="image/product'+key+'.jpg" alt="">'+
-// '<div class="content">'+
-// '<h3>watermalon</h3>'+
-// '<span class="price">$100/-</span>'+
-// '<span class="quantity">qty : '+value+'</span>'+
-// '</div>'+
-// '</div>'
-
-
 
 // <tr>
 // <td><input type="checkbox"id="check"></td>
@@ -94,3 +70,35 @@
 // <td class="total">0</td>
 // <td><p class="del">刪除</p></td>
 // </tr> 
+
+function sendOrder(){
+// var dataUrl = "http://127.0.0.1:9090/com/getAll"
+let dataUrl = "http://127.0.0.1:9090/user/userLogin"
+
+var jwt = localStorage.getItem("token");
+
+$.ajax({
+    url: dataUrl,
+    method: 'POST',
+    dataType: 'text',
+    data: userdata,
+    async: true,
+    
+
+    success: res => {
+        var resList = JSON.parse(res) // string 轉 JSON object
+        console.log(resList)
+        $.each(resList, function(i, n){
+            $('#list-wrapper').append(
+
+                
+                                  );
+        })
+        setpage()
+    },
+
+    error: err => {
+        console.log(err)
+    },
+});
+}
