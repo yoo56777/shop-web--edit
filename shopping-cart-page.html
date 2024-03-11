@@ -66,8 +66,36 @@
             </tr>        -->
         </div>
     </table>
+    <div class="top">
+        <p style="font-size:22px;">購買資料</p>
+    </div>
+    <form action="/formprocess.php" method="post" class="checkout">
+        <div>
+        <p>訂購人:</p>
+        <p><input type="text" name="name"></p>
+    
+        <p style="margin-top: 20px">送貨地址:</p>
+        <p><textarea name="address" rows="5" cols="22"></textarea></p>
+        </div>
+
+        <div>
+        <p>送貨方式: </p>
+        <p><input type="radio" name="delivery" value="html"> 7-11</p>
+        <p><input type="radio" name="delivery" value="css"> 全家</p>
+        <p><input type="radio" name="delivery" value="js"> 宅配</p>
+    
+        <p style="margin-top: 10px">付款方式:</p>
+        <p><input type="radio" name="payment" value="html"> 貨到付款</p>
+        <p><input type="radio" name="payment" value="css"> 線上刷卡</p>
+        <p><input type="radio" name="payment" value="js"> 匯款</p>
+        </div>
+    </form>
     <div class="foot">
-        <span>商品總計：</span><span class="sumTotal"></span><a href="checkout.html"><button onclick="sendOrder()">結帳</button></a>
+        <span>商品總計：</span><span class="sumTotal"></span>
+        <!-- <a href="checkout.html"> -->
+        <a href="#">
+            <button onclick="sendOrder()">結帳</button>
+        </a>
     </div>
 </div>
 <!-- cart section ends -->
@@ -157,6 +185,14 @@ function change(){
             if(_input.value<=1&&opera=='-'){
                 return
             }
+            let comId = Number($(event.target).parent().parent().children().eq(0).text())
+            if(opera=='+'){
+                ++cartMap.get(comId)[1]
+            }else if(opera=='-'){
+                --cartMap.get(comId)[1]
+            }
+            localStorage.setItem("cartMap", JSON.stringify(Array.from(cartMap.entries())))
+            location.reload()
             let num=eval(_input.value*1+opera+1)
             _input.value=num
             let price=this.parentNode.previousElementSibling.innerHTML*1
@@ -193,7 +229,7 @@ function change(){
         let _checkedboxes=document.querySelectorAll('input:checked:not(#all)')
         let sumTotal=0
         _checkedboxes.forEach(_checkedbox=>{
-            sumTotal+=_checkedbox.parentNode.parentNode.children[5].innerText * 1 
+            sumTotal+=_checkedbox.parentNode.parentNode.children[6].innerText * 1 
         })
         _sumTotal.innerHTML=sumTotal
     }
