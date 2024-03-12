@@ -58,7 +58,7 @@ $(document).ready(()=>{
             console.log(resList)
             $.each(resList, function(i, n){
             $('#orderno').append(            
-                '<option>'+n+'</option>');
+                '<option id="ordno">'+n+'</option>');
             })
         },
         error: err => {
@@ -68,3 +68,84 @@ $(document).ready(()=>{
 })
 
 
+function searOrder(){
+
+    let dataUrl = "http://127.0.0.1:9090/order/getByListNo?no="
+    let orderno = $('#orderno').val()
+    dataUrl += orderno
+    console.log(dataUrl)
+    jwt = localStorage.getItem("token")
+
+    $.ajax({
+        url: dataUrl,
+        method: 'GET',
+        dataType: 'text',
+        async: true,
+        contentType: 'application/json;charset=utf-8',
+        cache: false,
+        headers: {
+            "Authorization" : "Bearer " + jwt
+        },
+
+        success: res => {
+            var resList = JSON.parse(res) // string 轉 JSON object
+            console.log(resList)
+            $.each(resList, function(i, n){
+                dataUrl = "http://127.0.0.1:9090/com/getById?id="
+                dataUrl += n.orderCommodityID
+                $.ajax({
+                    url: dataUrl,
+                    method: 'GET',
+                    dataType: 'json',
+                    async: true,
+                    contentType: 'application/json;charset=utf-8',
+                    cache: false,
+                    headers: {
+                        "Authorization" : "Bearer " + jwt
+                    },
+                    success: res => {
+                        console.log(res)
+                        $('#ordercom').append(            
+                            '<tr>'+
+                            '<td><img src='+res.commodityImgPath+'></td>'+
+                            '<td>'+res.commodityName+'</td>'+   
+                            '<td>'+n.orderPrice+'</td>'+
+                            '<td>'+n.orderQty+'</td>'+
+                            '<td class="total">'+n.orderPrice*n.orderQty+'</td>'+
+                            '</tr>'
+                        );
+                    },
+                    error: err => {
+                        window.alert(err.responseText)
+                    },
+                })
+
+
+            })
+        },
+        error: err => {
+            window.alert(err.responseText)
+        },
+    })
+
+}
+
+
+
+// $.ajax({
+//     url: dataUrl,
+//     method: 'GET',
+//     dataType: 'text',
+//     async: true,
+//     contentType: 'application/json;charset=utf-8',
+//     cache: false,
+//     headers: {
+//         "Authorization" : "Bearer " + jwt
+//     },
+//     success: res => {
+
+//     },
+//     error: err => {
+//         window.alert(err.responseText)
+//     },
+// })
