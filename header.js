@@ -174,8 +174,14 @@ $('.header').load('header.html', function(){
         updateCartTotal()
     })
 
-    $('#logout').on('click', ()=>{
+    $('#logout').on('click', () => {
         localStorage.removeItem("token")
         location.reload()
+    })
+
+    $('#searchBtn').on('click', () => {
+        let tag = $('#search-box').val()
+        let type = 2
+        location.href="product-page.html?type="+type+"&tag="+tag
     })
 })

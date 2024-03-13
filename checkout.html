@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="style.css">;
     <!-- Jquery JavaScript 文件 -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>   
-    <script src="order-page.js"></script>
 </head>
 
 <body>
@@ -32,46 +31,31 @@
 
 <div class="cart">
     <div class="top">
-        <p style="font-size:24px;">訂單查詢</p>
+        <p style="font-size:22px;">購買資料</p>
     </div>
-    <table id="ordercom">
-        <span style="font-size:18px;"> 訂單編號：
-        <select id="orderno" style="font-size:18px; margin-bottom: 20px;">
-            <!-- <option>您的訂單編號</option>
-            <option>2401060003</option>
-            <option>2401060004</option>
-            <option>2401060005</option>
-            <option>2401060006</option> -->
-        </select>
-        <button style="font-size:18px; margin-left: 16px; color:#ff7800" onclick="searOrder()">查詢</button>
-        </span>
-        
-        <tr> 
-            <td>商品圖片</td>
-            <td>商品名稱</td>   
-            <td>單價</td>
-            <td>數量</td>
-            <td>總價</td>
-        </tr>
-        <!-- <tr id="ordercom"> -->
-        <!-- <tr>
-            <td><img src="image/product1.jpg"></td>
-            <td>商品一</td>   
-            <td>199</td>
-            <td>2</td>
-            <td class="total">398</td>
-        </tr>
-        <tr>
-            <td><img src="image/product2.jpg"></td>
-            <td>商品二</td>   
-            <td>299</td>
-            <td>1</td>
-            <td class="total">299</td>
-        </tr> -->
-    <!-- </tr> -->
-    </table>
+    <form action="/formprocess.php" method="post" class="checkout">
+        <div>
+        <p>訂購人:</p>
+        <p><input type="text" name="name"></p>
+    
+        <p style="margin-top: 20px">送貨地址:</p>
+        <p><textarea name="address" rows="5" cols="22"></textarea></p>
+        </div>
+
+        <div>
+        <p>送貨方式: </p>
+        <p><input type="radio" name="delivery" value="html"> 7-11</p>
+        <p><input type="radio" name="delivery" value="css"> 全家</p>
+        <p><input type="radio" name="delivery" value="js"> 宅配</p>
+    
+        <p style="margin-top: 10px">付款方式:</p>
+        <p><input type="radio" name="payment" value="html"> 貨到付款</p>
+        <p><input type="radio" name="payment" value="css"> 線上刷卡</p>
+        <p><input type="radio" name="payment" value="js"> 匯款</p>
+        </div>
+    </form>
     <div class="foot">
-        <button>問題回報</button>
+        <a href="order-page.html"><button>送出資料</button></a>
     </div>
 </div>
 
