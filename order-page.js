@@ -73,8 +73,9 @@ function searOrder(){
     let dataUrl = "http://127.0.0.1:9090/order/getByListNo?no="
     let orderno = $('#orderno').val()
     dataUrl += orderno
-    console.log(dataUrl)
+    //console.log(dataUrl)
     jwt = localStorage.getItem("token")
+    $('#ordercom').empty()
 
     $.ajax({
         url: dataUrl,
@@ -89,7 +90,7 @@ function searOrder(){
 
         success: res => {
             var resList = JSON.parse(res) // string 轉 JSON object
-            console.log(resList)
+            //console.log(resList)
             $.each(resList, function(i, n){
                 dataUrl = "http://127.0.0.1:9090/com/getById?id="
                 dataUrl += n.orderCommodityID
@@ -104,7 +105,7 @@ function searOrder(){
                         "Authorization" : "Bearer " + jwt
                     },
                     success: res => {
-                        console.log(res)
+                        //console.log(res)
                         $('#ordercom').append(            
                             '<tr>'+
                             '<td><img src='+res.commodityImgPath+'></td>'+
@@ -119,8 +120,6 @@ function searOrder(){
                         window.alert(err.responseText)
                     },
                 })
-
-
             })
         },
         error: err => {

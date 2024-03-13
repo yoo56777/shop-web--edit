@@ -34,26 +34,28 @@
     <div class="top">
         <p style="font-size:24px;">訂單查詢</p>
     </div>
-    <table id="ordercom">
-        <span style="font-size:18px;"> 訂單編號：
-        <select id="orderno" style="font-size:18px; margin-bottom: 20px;">
-            <!-- <option>您的訂單編號</option>
-            <option>2401060003</option>
-            <option>2401060004</option>
-            <option>2401060005</option>
-            <option>2401060006</option> -->
-        </select>
-        <button style="font-size:18px; margin-left: 16px; color:#ff7800" onclick="searOrder()">查詢</button>
-        </span>
+    <table>
+        <thead>
+            <span style="font-size:18px;"> 訂單編號：
+                <select id="orderno" style="font-size:18px; margin-bottom: 20px;">
+                    <!-- <option>您的訂單編號</option>
+                            <option>2401060003</option>
+                            <option>2401060004</option>
+                            <option>2401060005</option>
+                            <option>2401060006</option> -->
+                </select>
+                <button style="font-size:18px; margin-left: 16px; color:#ff7800" onclick="searOrder()">查詢</button>
+            </span>
         
-        <tr> 
-            <td>商品圖片</td>
-            <td>商品名稱</td>   
-            <td>單價</td>
-            <td>數量</td>
-            <td>總價</td>
-        </tr>
-        <!-- <tr id="ordercom"> -->
+            <tr>
+                <td>商品圖片</td>
+                <td>商品名稱</td>
+                <td>單價</td>
+                <td>數量</td>
+                <td>總價</td>
+            </tr>
+        </thead>
+        <tbody id="ordercom">
         <!-- <tr>
             <td><img src="image/product1.jpg"></td>
             <td>商品一</td>   
@@ -68,7 +70,7 @@
             <td>1</td>
             <td class="total">299</td>
         </tr> -->
-    <!-- </tr> -->
+        </tbody>
     </table>
     <div class="foot">
         <button>問題回報</button>
