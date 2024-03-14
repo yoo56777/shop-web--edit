@@ -2,13 +2,13 @@ function getByTag(){
     var url = new URL(location.href);
     let type = url.searchParams.get('type')
     var dataUrl
-    if (type === 1)
+    if (type == 1)
         dataUrl = "http://127.0.0.1:9090/com/getByTag?tag="
     else
         dataUrl = "http://127.0.0.1:9090/com/search?key="
     var tag = url.searchParams.get('tag');
     dataUrl += tag
-    $('#tagTitle').text(tag)
+    $('#tagTitle').text(tag)    
     // var userdata = { id : id }
 
 

@@ -108,13 +108,19 @@ function searOrder(){
                         //console.log(res)
                         $('#ordercom').append(            
                             '<tr>'+
-                            '<td><img src='+res.commodityImgPath+'></td>'+
-                            '<td>'+res.commodityName+'</td>'+   
-                            '<td>'+n.orderPrice+'</td>'+
-                            '<td>'+n.orderQty+'</td>'+
-                            '<td class="total">'+n.orderPrice*n.orderQty+'</td>'+
+                                '<td><img src='+res.commodityImgPath+'></td>'+
+                                '<td>'+res.commodityName+'</td>'+   
+                                '<td>'+res.commodityPrice+'</td>'+
+                                '<td>'+n.orderQty+'</td>'+
+                                '<td class="total">'+n.orderPrice+'</td>'+
                             '</tr>'
                         );
+                        let total = 0;
+                        $.each($('#ordercom').children(), (i, n) => {
+                            total += Number($(n).children('.total').text())
+                        })
+                        console.log(total)
+                        $('.sumTotal').text(total)
                     },
                     error: err => {
                         window.alert(err.responseText)

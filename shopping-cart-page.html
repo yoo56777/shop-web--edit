@@ -36,16 +36,18 @@
     </div>
 
     <table>
-        <tr> 
-            <td><input type="checkbox"id="all"></td>
-            <td>商品照片</td>
-            <td>商品名稱</td>   
-            <td>單價</td>
-            <td>數量</td>
-            <td>總價</td>
-            <td>動作</td>
-        </tr>
-        <div id="cartTable">
+        <thead>
+            <tr> 
+                <td><input type="checkbox" id="all"></td>
+                <td>商品照片</td>
+                <td>商品名稱</td>   
+                <td>單價</td>
+                <td>數量</td>
+                <td>總價</td>
+                <td>動作</td>
+            </tr>
+        </thead>
+        <tbody id="cartTable">
             <!-- <tr>
                 <td><input type="checkbox"id="check"></td>
                 <td><img src="image/product1.jpg"></td>
@@ -64,7 +66,7 @@
                 <td class="total">0</td>
                 <td><p class="del">刪除</p></td>
             </tr>        -->
-        </div>
+        </tbody>
     </table>
     <div class="top">
         <p style="font-size:22px;">購買資料</p>
@@ -156,6 +158,20 @@
 <!-- js link -->
 <script src="script.js"></script>
 
+<style>
+    thead {
+        font-size: 2.5em;
+    }
+
+    tbody {
+        font-size: 2em;
+    }
+
+    .foot span {
+        font-size: 1.5em;
+    }
+</style>
+
 </body>
 </html>
 
@@ -171,9 +187,10 @@ function change(){
             console.log(comId)
             cartMap.delete(comId)
             localStorage.setItem("cartMap", JSON.stringify(Array.from(cartMap.entries())))
+            $('#cartArea').children('#'+comId).remove()
             _del.parentNode.parentNode.remove()
             sumTotal()
-            location.reload()
+            //location.reload()
         }
     });
     //單價
@@ -192,7 +209,9 @@ function change(){
                 --cartMap.get(comId)[1]
             }
             localStorage.setItem("cartMap", JSON.stringify(Array.from(cartMap.entries())))
-            location.reload()
+            $('#cartArea').children('#'+comId).find('.content').find('.price').text('$'+cartMap.get(comId)[1]*cartMap.get(comId)[2])
+            $('#cartArea').children('#'+comId).find('.content').find('.quantity').text('qty : '+cartMap.get(comId)[1])
+            //location.reload()
             let num=eval(_input.value*1+opera+1)
             _input.value=num
             let price=this.parentNode.previousElementSibling.innerHTML*1
